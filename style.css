@@ -54,3 +54,8 @@ body {
   border: none;
   border-radius: 2px;
 }
+
+.footer {
+  padding: 30px;
+  background-color: deepskyblue;
+}

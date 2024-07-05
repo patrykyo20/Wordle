@@ -69,7 +69,6 @@ function checkWord(key) {
 
 function colorBorder(letter, index) {
   if (letter === correctWord[index]) {
-    console.log(formatInput(index + 1).backgroundColor)
     formatInput(index + 1).style.border = `${borderStyle} ${colors.success}`
   } else if (correctWord.includes(letter)) {
     formatInput(index + 1).style.border = `${borderStyle} ${colors.warning}`
@@ -84,7 +83,6 @@ function endScenario() {
   const stringWord = word.join('');
 
   if (correctWord === stringWord) {
-    console.log(score)
     score.innerHTML = `Congratulations! You won the ${wordRow + 1}th times`;
     score.style.color = `${colors.success}`
     setTimeout(() => {
