@@ -44,20 +44,25 @@ function checkWord(key) {
   if (key === 'Enter' && word.length === 5) {
     word.forEach((letter, index) => {
       const formatLetter = letter.toLowerCase();
-
-      if (formatLetter === correctWord[index]) {
-        console.log(formatInput(index + 1).backgroundColor)
-        formatInput(index + 1).style.border = '2px solid #20b2aa'
-      } else if (correctWord.includes(formatLetter)) {
-        formatInput(index + 1).style.border = '2px solid #fff68f'
-      } else {
-        formatInput(index + 1).style.border = '2px solid #cc0000'
-      }
-    })
+      
+      colorBorder(formatLetter, index);
+    });
+  
     wordRow++;
     word = [];
   };
 
   return;
+};
+
+function colorBorder(letter, index) {
+  if (letter === correctWord[index]) {
+    console.log(formatInput(index + 1).backgroundColor)
+    formatInput(index + 1).style.border = '2px solid #20b2aa'
+  } else if (correctWord.includes(letter)) {
+    formatInput(index + 1).style.border = '2px solid #fff68f'
+  } else {
+    formatInput(index + 1).style.border = '2px solid #cc0000'
+  };
 };
 
