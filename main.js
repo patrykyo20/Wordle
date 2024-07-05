@@ -87,11 +87,17 @@ function endScenario() {
     console.log(score)
     score.innerHTML = `Congratulations! You won the ${wordRow + 1}th times`;
     score.style.color = `${colors.success}`
+    setTimeout(() => {
+      location.reload()
+    }, 2000)
   };
 
   if (!wordleContainer[wordRow + 1]) {
     score.innerHTML = `Unfortunately! You loose`;
     score.style.color = `${colors.danger}`
-  }
+    setTimeout(() => {
+      location.reload()
+    }, 2000)
+  };
 };
 
