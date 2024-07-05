@@ -1,12 +1,18 @@
 const wordleContainer = document.querySelectorAll(".container__word");
 let wordRow = 0;
 
-const word = [];
+const correctWord = 'maska';
+let word = [];
 
 document.addEventListener('keyup', (e) => {
-  enterLetter(e.key)
+  enterLetter(e.key);
+  checkWord(e.key);
 });
 
+function formatInput(length) {
+  return wordleContainer[wordRow].children[length - 1]
+};
+ 
 function enterLetter(letter) {
   if (letter === 'Backspace' && word.length) {
     word.pop();
@@ -31,6 +37,27 @@ function checkKey(value) {
 };
 
 function puttingLetter(length, letter = '') {
-  wordleContainer[wordRow].children[length - 1].value = letter
-}
+  formatInput(length).value = letter
+};
+
+function checkWord(key) {
+  if (key === 'Enter' && word.length === 5) {
+    word.forEach((letter, index) => {
+      const formatLetter = letter.toLowerCase();
+
+      if (formatLetter === correctWord[index]) {
+        console.log(formatInput(index + 1).backgroundColor)
+        formatInput(index + 1).style.border = '2px solid #20b2aa'
+      } else if (correctWord.includes(formatLetter)) {
+        formatInput(index + 1).style.border = '2px solid #fff68f'
+      } else {
+        formatInput(index + 1).style.border = '2px solid #cc0000'
+      }
+    })
+    wordRow++;
+    word = [];
+  };
+
+  return;
+};
 
