@@ -1,18 +1,23 @@
-const wordleContainer = document.querySelector(".container__word");
+const wordleContainer = document.querySelectorAll(".container__word");
+let wordRow = 0;
 
 const word = [];
 
 document.addEventListener('keyup', (e) => {
-  if (e.key === 'Backspace') {
-    word.pop();
-  };
-
-  if (word.length < 5 && checkKey(e.key)) {
-    word.push(e.key);
-  };
-
-  console.log(word);
+  enterLetter(e.key)
 });
+
+function enterLetter(letter) {
+  if (letter === 'Backspace' && word.length) {
+    word.pop();
+    puttingLetter(word.length + 1, '');
+  };
+
+  if (word.length < 5 && checkKey(letter)) {
+    word.push(letter);
+    puttingLetter(word.length, letter);
+  };
+};
 
 function checkKey(value) {
   if (
@@ -24,4 +29,8 @@ function checkKey(value) {
     return value;
   };
 };
+
+function puttingLetter(length, letter = '') {
+  wordleContainer[wordRow].children[length - 1].value = letter
+}
 
