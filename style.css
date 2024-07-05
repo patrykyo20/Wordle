@@ -14,6 +14,14 @@ body {
   background-color: beige;
 }
 
+.title {
+  font-size: 32px;
+}
+
+.typography--center {
+  text-align: center;
+}
+
 .container {
   min-height: 80vh;
   padding: 50px;
@@ -26,7 +34,6 @@ body {
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  width: 50%;
 }
 
 .input {
@@ -39,4 +46,11 @@ body {
 .input:focus {
   text-align: center;
   font-size: 20px;
+}
+
+.button {
+  padding: 20px;
+  height: 50px;
+  border: none;
+  border-radius: 2px;
 }
